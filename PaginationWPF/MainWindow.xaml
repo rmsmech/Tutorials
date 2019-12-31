@@ -1,0 +1,15 @@
+﻿<Window x:Class="PaginationWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PaginationWPF"
+        xmlns:hctrl="clr-namespace:helperControls;assembly=helperControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid DataContext="{Binding}">
+        <hctrl:uc_pagination VerticalAlignment="Center" DataContext="{Binding topPagination,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+        <hctrl:uc_pagination VerticalAlignment="Bottom" DataContext="{Binding bottomPagination, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+        
+    </Grid>
+</Window>
