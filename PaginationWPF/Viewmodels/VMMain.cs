@@ -36,7 +36,7 @@ namespace PaginationWPF.Viewmodels
 		}
 
 		public VMMain() 
-		{
+		{ 
 			
 		}
 
