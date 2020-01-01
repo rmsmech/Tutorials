@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:PaginationWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <local:VerficiationConverter x:Key="CnvVerficiation"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -55,7 +55,11 @@ namespace helperControls.Models
             total_items = _totalitemscount;
             items_per_page = _pageitemcount;
 
-            total_pages = total_items / items_per_page; // Problem to be solved
+            int remainder_check = 0;
+            Math.DivRem(total_items, items_per_page, out remainder_check);
+            total_pages = total_items / items_per_page;
+            if (remainder_check != 0) total_pages++; //Increment by 1
+
             current_page = 1;
             maxitemsperpage = 15;
         }

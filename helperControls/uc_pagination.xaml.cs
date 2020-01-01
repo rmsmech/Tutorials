@@ -41,20 +41,5 @@ namespace helperControls
                 throw;
             }
         }
-
-        private void tbxGoTo_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.KeyboardDevice.IsKeyDown(Key.Enter))
-                {
-
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
     }
 }
