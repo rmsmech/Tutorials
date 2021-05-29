@@ -1,0 +1,90 @@
+﻿<Window x:Class="NotificationDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NotificationDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="600">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Background="#FFD8E9F1" >
+                <TextBlock Text="Title"/>
+                <TextBlock Text="Message"/>
+                <TextBlock Text="Dialog Result"/>
+                <TextBlock Text="User Input"/>
+            </StackPanel>
+
+            <StackPanel  Grid.Column="1">
+                <TextBox x:Name="tbxTitle"/>
+                <TextBox x:Name="tbxMessage"/>
+                <TextBlock x:Name="tblckDialogResult"/>
+                <TextBlock x:Name="tblckUserInput"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="5" Background="#FFE9EBEB">
+                <StackPanel Margin="5">
+                    <TextBlock Text="Icon Type" FontSize="14" FontWeight="Bold"/>
+                    <RadioButton x:Name="rbtnInfo" Content="Information" IsChecked="True"/>
+                    <RadioButton x:Name="rbtnWarn" Content="Warning"/>
+                    <RadioButton x:Name="rbtnError" Content="Error"/>
+                    <RadioButton x:Name="rbtnSuccess" Content="Success"/>
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock Text="Notification Type" FontSize="14" FontWeight="Bold"/>
+                    <RadioButton x:Name="rbtnTypeNotify" Content="Notify" IsChecked="True"/>
+                    <RadioButton x:Name="rbtnTypeConfirm" Content="Confirm"/>
+                    <RadioButton x:Name="rbtnTypeGetInput" Content="Get Input"/>
+                    <RadioButton x:Name="rbtnTypeContainerView" Content="ContainerView"/>
+                </StackPanel>
+
+                <StackPanel Margin="5">
+                    <TextBlock Text="Mode" FontSize="14" FontWeight="Bold"/>
+                    <RadioButton x:Name="rbtnModeNotify" Content="Notify" IsChecked="True"/>
+                    <RadioButton x:Name="rbtnModeToast" Content="Toast"/>
+                </StackPanel>
+            </StackPanel>
+            
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFF1F0E7">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left" >
+                    <RadioButton x:Name="rbtnHaleyNotify" Content="Haley" IsChecked="True"/>
+                    <RadioButton x:Name="rbtndefaultNotify" Content="Default"/>
+                </StackPanel>
+                <CheckBox VerticalAlignment="Center" Content="Blur" x:Name="cbxBlur" Margin="15"/>
+            </StackPanel>
+            
+            <Button x:Name="btnSend" Content="Notify" Height="30" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Click="btnSend_Click"/>
+            
+        </Grid>
+        
+    </Grid>
+    
+</Window>

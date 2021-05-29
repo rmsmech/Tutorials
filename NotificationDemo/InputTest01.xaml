@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="NotificationDemo.InputTest01"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NotificationDemo"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Margin="2">
+        <CheckBox Content="Supervisor" IsChecked="{Binding IsEmployee,NotifyOnSourceUpdated=True}"/>
+        <CheckBox Content="Manager" IsChecked="{Binding IsManager,NotifyOnSourceUpdated=True}"/>
+        <CheckBox Content="President" IsChecked="{Binding IsPresident,NotifyOnSourceUpdated=True}"/>
+        <Button Content="Close" Width="120" Height="30" HorizontalAlignment="Left" Command="{Binding closeCommand}"/>
+    </StackPanel>
+</UserControl>
