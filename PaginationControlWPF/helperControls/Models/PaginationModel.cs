@@ -7,11 +7,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Haley.Flipper.MVVM.Models;
+using Haley.Models;
+using Haley.MVVM;
+using Haley.Abstractions;
+using Haley.Events;
+using Haley.Enums;
+using Haley.Utils;
+
 
 namespace helperControls.Models
 {
-    public class PaginationModel : ChangeNotifierModel
+    public class PaginationModel : ChangeNotifier
     {
         public int maxitemsperpage { get; set; }
 

@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Haley.Flipper.MVVM.Models;
-using Haley.Flipper.MVVM.Interfaces;
+using Haley.Abstractions;
+using Haley.Enums;
+using Haley.Events;
+using Haley.Models;
+using Haley.MVVM;
+using Haley.Utils;
 using helperControls.Models;
+
+
 
 namespace helperControls.ViewModel
 {
-    public class VMPagination : ChangeNotifierModel
+    public class VMPagination : ChangeNotifier
     {
         #region Properties
         private PaginationModel _pagination;
@@ -28,11 +34,11 @@ namespace helperControls.ViewModel
         #endregion
 
         #region CommandMethods
-        private void changePage(object obj)
+        private void changePage(string obj)
         {
             try
             {
-                int parameter = int.Parse((string)obj);
+                int parameter = int.Parse(obj);
                 int newpage = _pagination.current_page; //Get current page
 
                 switch (parameter)
@@ -75,7 +81,7 @@ namespace helperControls.ViewModel
 
         private void _initiation()
         {
-            cmd_change_page = new FlipperDelegateCommand(changePage, null);
+            cmd_change_page = new DelegateCommand<string>(changePage, null);
         }
 
         public void seed(PaginationModel pagination)
