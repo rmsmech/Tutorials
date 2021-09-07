@@ -1,0 +1,57 @@
+﻿<Window x:Class="Haley.FlexiMenuTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Haley.FlexiMenuTest"
+        xmlns:views="clr-namespace:Haley.FlexiMenuTest.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <hw:FlexiMenu Background="#FFF9F9EB" FootNote="Copyright @ 2021  HaleyProject" ToggleIcon="{StaticResource hamburger_combo_medium}" HeaderRegionHeight="140" >
+        <!--Set Intro View-->
+        <hw:FlexiMenu.WelcomeView>
+            <views:IntroView/>
+        </hw:FlexiMenu.WelcomeView>
+        
+        <!--Set Header Template (If required)-->
+        <hw:FlexiMenu.HeaderTemplate>
+            <DataTemplate>
+                <Grid >
+                    <Image Source="Assets/background.jpg" Stretch="UniformToFill" />
+                    <Image Source="Assets/hippo.png" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+                    <Grid VerticalAlignment="Bottom" Height="30" Background="#B2202020">
+                        <TextBlock Text="Company Management Demo"  TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" FontSize="16"/>
+                       
+                    </Grid>
+                    <Border Height="30" Width="30" Background="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" CornerRadius="5"/>
+                </Grid>
+            </DataTemplate>
+        </hw:FlexiMenu.HeaderTemplate>
+        <!--Set Menu Items-->
+        <hw:FlexiMenu.MenuItems>
+            
+            <!--Dashboard (with directly setting a view)-->
+            <hw:MenuItem Label="Dashboard" Action="ShowLocalView" hw:Icon.Default="{StaticResource home}">
+                <hw:MenuItem.View>
+                    <views:DashBoardHome/>
+                </hw:MenuItem.View>
+            </hw:MenuItem>
+            
+            <!--Second menu (Raise a command)-->
+            <hw:MenuItem Action="RaiseCommand" Label="Show Message" hw:Icon.Default="{StaticResource chat_double}" CommandName="CmdShowNotification" />
+
+            <hw:MenuItem Action="ShowLocalView" Label="Edit" hw:Icon.Default="{StaticResource edit}">
+                <hw:MenuItem.View>
+                    <views:WorkingView/>
+                </hw:MenuItem.View>
+            </hw:MenuItem>
+        </hw:FlexiMenu.MenuItems>
+        <!--Set Options (if Needed)-->
+        <hw:FlexiMenu.OptionItems>
+            <hw:MenuItem Label="Log out" hw:Icon.Default="{StaticResource info_circle}"/>
+        </hw:FlexiMenu.OptionItems>
+        
+    </hw:FlexiMenu>
+</Window>
