@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Globalization.External.ExternalControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             xmlns:local="clr-namespace:Globalization.External"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="400">
+    <Grid Background="#FF6A93E4">
+        <TextBlock Foreground="#FFF0D90F" FontSize="29" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{hm:Lang message}"/>
+        <TextBlock Foreground="#FFF0D90F" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{hm:Lang hello_world2,ProviderKey=Globalization.Test}"/>
+    </Grid>
+</UserControl>

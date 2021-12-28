@@ -9,7 +9,7 @@
         xmlns:views="clr-namespace:Haley.FlexiMenuTest.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <hw:FlexiMenu Background="#FFF9F9EB" FootNote="Copyright @ 2021  HaleyProject" ToggleIcon="{StaticResource hamburger_combo_medium}" HeaderRegionHeight="140" >
+    <hw:FlexiMenu Background="#FFF9F9EB" FootNote="Copyright @ 2021  HaleyProject" ToggleIcon="{StaticResource hamburger_combo_medium}" HeaderRegionHeight="140"  IsMenuBarOpen="False">
         <!--Set Intro View-->
         <hw:FlexiMenu.WelcomeView>
             <views:IntroView/>
@@ -48,10 +48,18 @@
                 </hw:MenuItem.View>
             </hw:MenuItem>
         </hw:FlexiMenu.MenuItems>
-        <!--Set Options (if Needed)-->
+        <!--Set Options (if Needed). Options can handle only Commands, it cannot set any view.-->
         <hw:FlexiMenu.OptionItems>
-            <hw:MenuItem Label="Log out" hw:Icon.Default="{StaticResource info_circle}"/>
+            <hw:CommandMenuItem Label="Log out" hw:Icon.Default="{StaticResource info_circle}"/>
         </hw:FlexiMenu.OptionItems>
+        
+        <!-- Set any floating menu if required. Floating menu is not visible on welcome view.-->
+        <hw:FlexiMenu.FloatingPanel>
+            <Grid Height="30" Width="30">
+                <Image Margin="5" Source="Assets/hippo.png"/>
+            </Grid>
+        </hw:FlexiMenu.FloatingPanel>
+        
         
     </hw:FlexiMenu>
 </Window>
