@@ -12,14 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Haley.Abstractions;
+using Haley.Enums;
+using Haley.Events;
 using Haley.FlexiMenuTest.ViewModels;
+using Haley.Models;
+using Haley.MVVM;
+using Haley.Utils;
+using Haley.WPF.Controls;
+
 
 namespace Haley.FlexiMenuTest
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : PlainWindow
     {
         public MainWindow()
         {
