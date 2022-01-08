@@ -1,0 +1,31 @@
+﻿<hw:PlainWindow x:Class="CustomControlButtons.NewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:local="clr-namespace:CustomControlButtons"
+        mc:Ignorable="d"
+        Title="NewWindow" Height="450" Width="800" CornerRadius="20" Background="White" hw:Icon.DefaultColor="Black" hw:Icon.HoverColor="Crimson" ControlBoxStyle="Mac" HideFooter="True"  HeaderHeight="40" HideMaximizeButton="True">
+    <hw:PlainWindow.HeaderTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Height="25" Width="25" Margin="3" Source="minus_medium.png"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" Text="Hello Window" Grid.Column="1"/>
+            </Grid>
+        </DataTemplate>
+    </hw:PlainWindow.HeaderTemplate>
+    <!--<hw:PlainWindow.ControlBoxTemplate>
+        <DataTemplate>
+            <hw:LinkedText Command="{x:Static hw:AdditionalCommands.Close}" Text="Close"/>
+        </DataTemplate>
+    </hw:PlainWindow.ControlBoxTemplate>-->
+<Grid>
+        
+    </Grid>
+</hw:PlainWindow>
