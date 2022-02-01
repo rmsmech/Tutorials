@@ -1,0 +1,34 @@
+﻿<hw:PlainWindow x:Class="LoginControl.Authenticationwindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginControl"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:ctrls="clr-namespace:LoginControl.Controls"
+        mc:Ignorable="d"
+        Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen" hm:WindowBlurAP.IsEnabled="True" Background="#0C6089DC" HideMaximizeButton="True" HideMinimizeButton="True" Margin="0" hw:Icon.HoverColor="Crimson" HideHeader="True" HideFooter="True" ResizeMode="NoResize">
+    <hw:PlainWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LoginControl;component/Dictionaries/LCRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+           </ResourceDictionary>
+    </hw:PlainWindow.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Image  Source="Images/polygon-shapes-beginner.jpg" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill"/>
+            <hw:ContainerViewer Width="300" Height="350" ViewKey="{Binding CurrentView,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" >
+                <hw:ContainerViewer.WelcomeView>
+                    <ctrls:WelcomeView/>
+                </hw:ContainerViewer.WelcomeView>
+            </hw:ContainerViewer>
+        </Grid>
+        <TextBlock Grid.Column="1" FontSize="25" Foreground="#FFCBBA22" Text="Welcome to our Organization !. Hope you have a good day !." TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</hw:PlainWindow>

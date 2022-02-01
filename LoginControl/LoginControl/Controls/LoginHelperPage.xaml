@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="LoginControl.Controls.LoginHelperPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:enums="clr-namespace:LoginControl"
+             xmlns:local="clr-namespace:LoginControl.Controls"
+             xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LoginControl;component/Dictionaries/LCRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border CornerRadius="30"  Background="#972E2C2E">
+        <Grid>
+            <TextBlock Text="Don't worry. We got you covered." VerticalAlignment="Top" TextWrapping="Wrap" Foreground="Wheat" FontSize="18" Opacity="60" TextAlignment="Center" Margin="20"/>
+            <StackPanel Margin="20" VerticalAlignment="Center">
+                <ItemsControl Style="{StaticResource ItmsCtrlCustom}">
+                    <TextBlock Text="Email Id " />
+                    <hw:PlainTextBox WaterMark="Email Id" Grid.Column="1"/>
+                </ItemsControl>
+                <ItemsControl Style="{StaticResource ItmsCtrlCustom}" Margin="5">
+                    <TextBlock Text="OTP "/>
+                    <hw:PlainTextBox WaterMark="Enter OTP" Grid.Column="1"/>
+                </ItemsControl>
+
+                <StackPanel Margin="5,5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <hw:PlainButton CornerRadius="5" Content="Validate OTP" Width="120" Background="#FFEBF33B" Foreground="Black" Margin="10,0"/>
+                    <hw:PlainButton CornerRadius="5" Content="Send OTP" Width="120" Background="#FFEBF33B" Foreground="Black" />
+                </StackPanel>
+
+                <hw:Separator Size="2" Background="Wheat" Margin="0,5"/>
+
+                <StackPanel IsEnabled="False">
+                    <ItemsControl Style="{StaticResource ItmsCtrlCustom}">
+                        <TextBlock Text="Password "/>
+                        <hw:PlainTextBox WaterMark="Enter New password" Grid.Column="1"/>
+                    </ItemsControl>
+                    <ItemsControl Style="{StaticResource ItmsCtrlCustom}" Margin="5">
+                        <TextBlock Text=" Re Enter Pass"/>
+                        <hw:PlainTextBox WaterMark="Re enter password" Grid.Column="1"/>
+                    </ItemsControl>
+                    <StackPanel Margin="5,5" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <hw:PlainButton CornerRadius="5" Content="Change Password" Width="120" Background="#FFEBF33B" Foreground="Black" />
+                    </StackPanel>
+                   
+                </StackPanel>
+                <hw:LinkedText Text="Goto Login page" Foreground="White" CommandParameter="{Binding Source={x:Static enums:ViewEnums.LoginPage}}" Command="{Binding CmdChangeView}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
