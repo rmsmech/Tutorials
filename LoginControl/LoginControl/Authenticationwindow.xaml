@@ -8,7 +8,7 @@
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:ctrls="clr-namespace:LoginControl.Controls"
         mc:Ignorable="d"
-        Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen" hm:WindowBlurAP.IsEnabled="True" Background="#0C6089DC" HideMaximizeButton="True" HideMinimizeButton="True" Margin="0" hw:Icon.HoverColor="Crimson" HideHeader="True" HideFooter="True" ResizeMode="NoResize">
+        Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen" hm:WindowBlurAP.IsEnabled="True" Background="#0C6089DC" HideMaximizeButton="True" HideMinimizeButton="True" Margin="0" hw:Icon.HoverColor="Crimson" HideHeader="True" HideFooter="True" ResizeMode="NoResize" hw:Icon.DefaultColor="black" >
     <hw:PlainWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

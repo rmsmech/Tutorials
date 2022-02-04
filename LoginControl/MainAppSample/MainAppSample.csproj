@@ -108,10 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Haley.MVVM">
-      <Version>6.1.10</Version>
+      <Version>6.1.11</Version>
     </PackageReference>
     <PackageReference Include="Haley.WPF">
-      <Version>5.1.13</Version>
+      <Version>5.1.14</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
