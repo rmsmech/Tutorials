@@ -20,4 +20,38 @@
         <Setter Property="Margin" Value="5,10"/>
     </Style>
 
+    <Style x:Key="MovementAnimation" TargetType="{x:Type UserControl}">
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TranslateTransform/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger  RoutedEvent="Loaded">
+                <EventTrigger.Actions>
+                    <!--Move from left to right-->
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" From="-600" To="0" Duration="0:0:1">
+                                <DoubleAnimation.EasingFunction>
+                                    <!--<BounceEase Bounces="3" Bounciness="7"/>-->
+                                    <ElasticEase Oscillations="4" 
+                             Springiness="10" EasingMode="EaseOut"/>
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                    <!--Change opacity-->
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.1" To="1.0" Duration="0:0:1">
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

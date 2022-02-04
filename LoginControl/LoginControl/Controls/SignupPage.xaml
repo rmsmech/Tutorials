@@ -21,6 +21,9 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
+    <UserControl.Style>
+        <Binding Source="{StaticResource MovementAnimation}"/>
+    </UserControl.Style>
     <Border CornerRadius="30"  Background="#972E2C2E">
         <Grid>
             <TextBlock Text="Hurray !. We are happy to have you onboard." VerticalAlignment="Top" TextWrapping="Wrap" Foreground="Wheat" FontSize="18" Opacity="60" TextAlignment="Center" Margin="20"/>

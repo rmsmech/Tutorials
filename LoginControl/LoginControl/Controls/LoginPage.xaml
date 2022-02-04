@@ -8,7 +8,7 @@
              xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
                 xmlns:enums="clr-namespace:LoginControl"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,8 +21,11 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Border CornerRadius="30"  Background="#972E2C2E">
-        <Grid>
+    <UserControl.Style>
+        <Binding Source="{StaticResource MovementAnimation}"/>
+    </UserControl.Style>
+    <Border x:Name="brderOverall" CornerRadius="30"  Background="#972E2C2E" >
+        <Grid x:Name="grid" >
             <hw:PlainImage hw:Icon.Default="{StaticResource avatar}" Height="40" Width="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-20" hw:Icon.DefaultColor="white" hw:Hover.IsEnabled="False"/>
             <StackPanel Margin="20" VerticalAlignment="Center">
                 <ItemsControl Style="{StaticResource ItmsCtrlCustom}">
