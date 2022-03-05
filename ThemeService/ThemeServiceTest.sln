@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeServiceTest", "ThemeServiceTest\ThemeServiceTest.csproj", "{C809BDF5-9221-44C8-B111-754650845921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeExternalTest", "ThemeExternalTest\ThemeExternalTest.csproj", "{8EA92466-EF64-4EC3-8B24-08C008C05E57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C809BDF5-9221-44C8-B111-754650845921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C809BDF5-9221-44C8-B111-754650845921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C809BDF5-9221-44C8-B111-754650845921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C809BDF5-9221-44C8-B111-754650845921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA92466-EF64-4EC3-8B24-08C008C05E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA92466-EF64-4EC3-8B24-08C008C05E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA92466-EF64-4EC3-8B24-08C008C05E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA92466-EF64-4EC3-8B24-08C008C05E57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3D0086D-C1BD-49B2-B0A4-BE7D9832BA3F}
+	EndGlobalSection
+EndGlobal

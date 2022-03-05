@@ -1,0 +1,33 @@
+﻿<Window x:Class="ThemeServiceTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThemeServiceTest"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Background="{DynamicResource scb_clr_01}">
+                <TextBlock Text="Group1-Asm1" FontSize="{DynamicResource fontsize_01}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Ellipse Fill="Blue" Margin="10" Style="{DynamicResource ellipse_01}"/>
+            </Grid>
+            <Grid Grid.Column="1" Background="{DynamicResource sty_bg_01}">
+                
+                <Button Height="30" Width="120" Content="Open External" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Click="Button_Click"/>
+            </Grid>
+        </Grid>
+
+        <ComboBox x:Name="cbxTheme" Height="30" Width="140" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" SelectionChanged="cbxTheme_SelectionChanged">
+            <ComboBoxItem Content="Theme1"/>
+            <ComboBoxItem Content="Theme2"/>
+            <ComboBoxItem Content="Theme3"/>
+        </ComboBox>
+    </Grid>
+</Window>

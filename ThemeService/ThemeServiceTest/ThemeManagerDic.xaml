@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <!--#region Theme providers-->
+        <ResourceDictionary Source="pack://application:,,,/ThemeExternalTest;component/Skins/Skin03.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/ThemeServiceTest;component/Skins/themegroup2/Style02.xaml"/>
+        <!--#endregion-->
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

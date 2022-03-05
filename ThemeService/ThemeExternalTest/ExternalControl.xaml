@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="ThemeExternalTest.ExternalControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ThemeExternalTest"
+             xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type hw:ComboButton}">
+            <Setter Property="ImageLocation" Value="Top"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="hw:Hover.Background" Value="{x:Null}"/>
+        </Style>
+    </UserControl.Resources>
+    <!--Datacontext is coming from DI-->
+    <Grid Background="{DynamicResource def_background_primary}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <UniformGrid  VerticalAlignment="Top" Height="70" Background="{DynamicResource def_background_tertiary}" Rows="1">
+            <UniformGrid.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="{DynamicResource def_shadow}" BlurRadius="10"/>
+            </UniformGrid.Effect>
+            <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home_medium}"/>
+            <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource settings_simple_medium}"/>
+            <hw:ComboButton Content="View" hw:Icon.Default="{StaticResource eye_medium}"/>
+
+            <hw:ComboButton Content="Save" hw:Icon.Default="{StaticResource save_medium}" hw:Icon.DefaultColor="{DynamicResource scb_clr_01}"/>
+            <hw:ComboButton Content="Copy" hw:Icon.Default="{StaticResource copy_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource new_file_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource calender_medium}"/>
+
+            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle_medium}"/>
+        </UniformGrid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  Margin="20">
+                <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}"/>
+                <TextBlock Text="Topic 1 : Introduction" Style="{DynamicResource def_h2}"/>
+                <TextBlock Text="Hello.. This is a test project"  Style="{DynamicResource def_h3}"/>
+                <TextBlock Text="I'm a sub title text"  Style="{DynamicResource def_h4_Secondary}"/>
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
+                    <hw:ComboRepeatButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4"  Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
+                    <hw:PlainTextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}" WaterMark=""/>
+                    <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" CommandParameter="testkitty2" Command="{Binding Cmd_ChangeContainerKey}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False" Content="Change"/>
+                    <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" CommandParameter="testkitty234" Command="{Binding Cmd_ChangeContainerKey}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False" Content="W Change"/>
+                </StackPanel>
+
+                <hw:PlainExpander Width="300" HorizontalAlignment="Left" CornerRadius="4">
+                    <StackPanel>
+                        <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello" />
+                        <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello"/>
+                        <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello" />
+                        <hw:PlainTextBox Height="30" Width="100" HorizontalAlignment="Left" CornerRadius="4"/>
+                        <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5"/>
+                        <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsChecked="True"/>
+                        <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsThreeState="True" Style="{StaticResource CircularToggleButton}" EnlargeSwitchButton="True"/>
+                    </StackPanel>
+                </hw:PlainExpander>
+                <hw:LinkedText Text="What a world"/>
+                <hw:SearchBar CornerRadius="5" Height="30" Margin="10"/>
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource microphone}" Height="Auto"/>
+                    <hw:ImageToggleButton IsChecked="{x:Null}" Icon="{StaticResource heart_plain}" Height="Auto"/>
+                    <hw:ImageToggleButton Icon="{StaticResource chat_single}" Height="Auto"/>
+                </StackPanel>
+                <TextBlock Text="{Binding DisplayMessage,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <hw:CollectionSelector Grid.Column="1" CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" TitleSelection="Selected Employees" TitleSource="Company Employees">
+                    <hw:CollectionSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Margin="5" />
+                        </ItemsPanelTemplate>
+                    </hw:CollectionSelector.ItemsPanel>
+                    <hw:CollectionSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="20" Margin="2">
+                                <hw:ImageButton/>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="-"/>
+                                <TextBlock Text="{Binding Age}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </hw:CollectionSelector.ItemTemplate>
+                </hw:CollectionSelector>
+                <hw:PlainListView CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top">
+                    <hw:PlainListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Margin="5" />
+                        </ItemsPanelTemplate>
+                    </hw:PlainListView.ItemsPanel>
+                    <hw:PlainListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="20" Margin="2">
+                                <hw:ImageButton/>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="-"/>
+                                <TextBlock Text="{Binding Age}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </hw:PlainListView.ItemTemplate>
+                </hw:PlainListView>
+            </StackPanel>
+
+        </Grid>
+
+        <hw:Pagination Grid.Row="3" Margin="5" ItemsCountPerPage="10" ItemsCountTotal="200" CornerRadius="5" hw:Hover.IsEnabled="False"/>
+    </Grid>
+</UserControl>
