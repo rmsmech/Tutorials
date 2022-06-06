@@ -1,0 +1,33 @@
+﻿<Window x:Class="RoundButtonDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoundButtonDemo"
+        xmlns:ctrls="clr-namespace:RoundButtonDemo.Themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Margin="20">
+        <Button Height="50" Width="120" Content="Click Me" Margin="5"/>
+        <Button Height="50" Width="120" Content="Click Me" Margin="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="Purple">
+            <Button.Template>
+                <!--INSIDE THIS TEMPLATE YOU CAN DEFINE YOUR BUTTON AS YOU WISH. EVEN INCLUDE FEW IMAGES OR OTHER CONTROLS-->
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <!-- USE A BORDER, TO HAVE CORNER RADIUS-->
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                        <!--For the content itself, use a content presenter (Content presenter is nothing but a framework element which will display the "Content" property of the templated parent, if it contains a property by name "Content". Since button has content, we can directly use a content present. We can also use other elements like textblock to display.-->
+                        <!--<TextBlock Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Style="{StaticResource roundButton}" Content="Hello there"/>
+        <Button Style="{StaticResource roundButton}" Content="Hello there"/>
+        <Button Style="{StaticResource roundButton}" Content="Hello there"/>
+        <local:RoundButton CornerRadius="15" Height="50" Width="120" Content="Hello there" />
+        <local:RoundButton CornerRadius="15" Height="50" Width="120" Content="Hello there" Background="Red" BorderThickness="2" BorderBrush="Green"/>
+        <local:RoundButton CornerRadius="15" Height="50" Width="120" Content="Hello there" Background="Orange" BorderThickness="2" BorderBrush="Red" Click="TestClick"/>
+        <ctrls:SimpleRoundButton CornerRadius="15" Height="50" Width="120" Content="Hello there" Background="Green" BorderThickness="2" BorderBrush="Magenta" Click="TestClick"/>
+    </StackPanel>
+</Window>

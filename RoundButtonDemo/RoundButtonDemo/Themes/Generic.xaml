@@ -1,0 +1,9 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:RoundButtonDemo">
+    <ResourceDictionary.MergedDictionaries>
+        <!-- FOR A CUSTOM CONTROL, A FOLDER NAME "THEMES" IS MANDATORY. ALSO, INSIDE THAT FOLDER, A RD NAMED "GENERIC.XAML" IS ALSO MANDATORY. wE CAN HAVE MULTIPLE CUSTOM CONTROLS, BUT WE WILL MERGE ALL THE RD IN THIS GENERIC XAML-->
+        <ResourceDictionary Source="pack://application:,,,/RoundButtonDemo;component/Themes/SimpleRoundButttonRD.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
