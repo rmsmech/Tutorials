@@ -1,0 +1,35 @@
+﻿<Window x:Class="LoadingAnimation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoadingAnimation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Hello" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="25" Foreground="#FF565252"/>
+            <Button Content="Click Me" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="120" Margin="0,40" Click="Button_Click"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <WrapPanel Margin="5">
+                <TextBlock Text="Max Step"/>
+                <TextBox x:Name="tbxMaxStep" Width="120"/>
+            </WrapPanel>
+            <WrapPanel Margin="5">
+                <TextBlock Text="Duration"/>
+                <TextBox x:Name="tbxSeconds" Width="120"/>
+            </WrapPanel>
+            <CheckBox x:Name="cbxIgnoreOpacity" Margin="5" Content="Ignore Opacity Animation"/>
+            <CheckBox x:Name="cbxIgnoreSize" Margin="5" Content="Ignore Size Animation"/>
+        </StackPanel>
+        <ContentControl x:Name="loadingContent" Background="Transparent"/>
+        <Button Grid.Row="1" Content="STOP" Click="Button_Click_1"/>
+       
+
+    </Grid>
+</Window>
