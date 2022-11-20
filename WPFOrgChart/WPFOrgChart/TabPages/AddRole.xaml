@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="WPFOrgChart.TabPages.AddRole"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFOrgChart.TabPages"
+              xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <StackPanel>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" Focusable="False">
+                <TextBlock Text="Role Title" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <TextBox Text="{Binding Current.Title,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="27"/>
+        </ItemsControl>
+
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" Focusable="False">
+                <TextBlock Text="Department" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <!--Lets bind to selected value with two way mode-->
+            <ComboBox ItemsSource="{Binding Departments,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id" SelectedValue="{Binding Current.DepartmentId,Mode=TwoWay, NotifyOnSourceUpdated=True,  UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Height="27"/>
+        </ItemsControl>
+       
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center">
+                <TextBlock Text="Above (Role)" Focusable="False"/>
+                <!--<TextBlock Text="*" Foreground="Red"/>-->
+            </WrapPanel>
+            <!--Should ignore the current role.-->
+            <ComboBox x:Name="CbxAboveRole"  SelectedValuePath="Id" SelectedValue="{Binding Current.AboveRole,Mode=TwoWay, NotifyOnSourceUpdated=True,  UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Height="27">
+                <ComboBox.ItemsSource>
+                    <MultiBinding Converter="{StaticResource RoleFilter}">
+                        <Binding Path="Roles" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Current.Id" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Current.DepartmentId" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <!--If cross referencing is not enabled, then we should filter by department. Else we can show all roles.-->
+                        <Binding Path="IsChecked" Converter="{hm:Converter Kind=InverseBoolean}" ElementName="filter_reporting" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                    </MultiBinding>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+        </ItemsControl>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center">
+                <TextBlock Text="Reports To (Role)" Focusable="False"/>
+                <!--<TextBlock Text="*" Foreground="Red"/>-->
+            </WrapPanel>
+            <ComboBox  SelectedValuePath="Id" SelectedValue="{Binding Current.ReportsTo,Mode=TwoWay, NotifyOnSourceUpdated=True,  UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Height="27">
+                <ComboBox.ItemsSource>
+                    <MultiBinding Converter="{StaticResource RoleFilter}">
+                        <Binding Path="Roles" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Current.Id" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="Current.DepartmentId" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="IsChecked" Converter="{hm:Converter Kind=InverseBoolean}" ElementName="filter_reporting" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Path="SelectedItem.Level" ElementName="CbxAboveRole" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                    </MultiBinding>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+        </ItemsControl>
+        <hw:Separator Margin="5"/>
+        <Grid Margin="5" >
+            <hw:LinkedText Text="Reset Reportings" HorizontalAlignment="Left" Command="{Binding CMDResetReportings}"/>
+            <hw:PlainCheckBox x:Name="filter_reporting" HorizontalAlignment="Right" Content="Cross dept. reporting" IsChecked="False" />
+        </Grid>
+    </StackPanel>
+</UserControl>

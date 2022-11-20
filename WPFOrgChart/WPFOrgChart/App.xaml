@@ -1,0 +1,38 @@
+﻿<Application x:Class="WPFOrgChart.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPFOrgChart"
+             xmlns:conv="clr-namespace:WPFOrgChart.Converters"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Haley.WPF.IconsPack;component/Dictionaries/haleyRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="itmCtrlStyle" TargetType="{x:Type ItemsControl}">
+                <Setter Property="Focusable" Value="False"/>
+                <!--So that the tab button doesn't stop here-->
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <Grid Margin="5,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type WrapPanel}">
+                <Setter Property="Focusable" Value="False"/>
+            </Style>
+
+            <conv:FilteredRoleConverter x:Key="RoleFilter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

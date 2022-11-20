@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="WPFOrgChart.TabPages.AddPerson"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFOrgChart.TabPages"
+              xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <StackPanel>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" >
+                <TextBlock Text="First Name" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <TextBox Text="{Binding Current.FirstName,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="27"/>
+        </ItemsControl>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" >
+                <TextBlock Text="Last Name" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <TextBox Text="{Binding Current.LastName}" Grid.Column="1" Height="27"/>
+        </ItemsControl>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" >
+                <TextBlock Text="Email Id" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <TextBox Text="{Binding Current.EmailId,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="27"/>
+        </ItemsControl>
+
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" >
+                <TextBlock Text="Department" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <ComboBox ItemsSource="{Binding Departments,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id" SelectedValue="{Binding Current.DepartmentId,Mode=TwoWay, NotifyOnSourceUpdated=True,  UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Height="27"/>
+        </ItemsControl>
+
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" >
+                <TextBlock Text="Role" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <ComboBox  SelectedValuePath="Id" SelectedValue="{Binding Current.RoleId,Mode=TwoWay, NotifyOnSourceUpdated=True,  UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="27">
+                <ComboBox.ItemsSource>
+                    <MultiBinding Converter="{StaticResource RoleFilter}">
+                        <Binding Path="Roles" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <!--Here we dont' have role comparision-->
+                        <Binding Source="{x:Null}"/>
+                        <Binding Path="Current.DepartmentId" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged"/>
+                        <Binding Source="{StaticResource True}" />
+                    </MultiBinding>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

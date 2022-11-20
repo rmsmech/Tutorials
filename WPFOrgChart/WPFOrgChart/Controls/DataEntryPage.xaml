@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="WPFOrgChart.Controls.DataEntryPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:enm="clr-namespace:WPFOrgChart.Enums"
+             xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             xmlns:tpages="clr-namespace:WPFOrgChart.TabPages"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:beh="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:WPFOrgChart.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300" >
+    <!--A page to enter all data (persons, roles, department etc)-->
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DGSelectedRowStyle" TargetType="{x:Type DataGridRow}">
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="Salmon"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="DGColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+                <Setter Property="Background" Value="DarkSlateGray"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="MinWidth" Value="30"/>
+                <Setter Property="MinHeight" Value="40"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="13"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <!--Lets keep this simple and on startup setup the persons as the first tab-->
+    
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tbctrl" DataContext="{Binding}">
+            <beh:Interaction.Triggers>
+                <beh:EventTrigger EventName="SelectionChanged">
+                    <hm:EventToCommand CommandParameter="{Binding ElementName=tbctrl,Path=SelectedItem.Tag}" Command="{Binding ElementName=tbctrl,Path=DataContext.CMDTabChanged}"/>
+                </beh:EventTrigger>
+                
+            </beh:Interaction.Triggers>
+            <TabItem Header="PERSONS" Width="120" Tag="{x:Static enm:TargetType.Person}" IsSelected="True">
+                <tpages:AddPerson DataContext="{Binding}"/>
+            </TabItem>
+            <TabItem Header="ROLE" Width="120" Tag="{x:Static enm:TargetType.Role}">
+                <tpages:AddRole DataContext="{Binding}"/>
+            </TabItem>
+            <TabItem Header="DEPARTMENT" Width="120" Tag="{x:Static enm:TargetType.Department}">
+                <tpages:AddDepartment DataContext="{Binding}"/>
+            </TabItem>
+            <!-- Extend salary later (if required)-->
+            <!--<TabItem Header="SALARY" Width="120">
+            </TabItem>-->
+        </TabControl>
+        <!--To add buttons-->
+        <Grid Grid.Row="1" Margin="5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="5" Text="{Binding Message}" Foreground="#FFD02121" Visibility="{Binding MessageVisible,Converter={hm:Converter Kind=BooltoVisibility}}"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <hw:ComboButton Height="30" Width="120" Content="Add / Update" Margin="5,0" ImageLocation="Left" hw:Icon.Default="{hw:ImgInt Kind=plus}" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Command="{Binding CMDAddUpdate}"/>
+                <hw:ComboButton Height="30" Width="120" Content="Reset" ImageLocation="Left" hw:Icon.Default="{hw:Img FA=arrow_rotate_left_light}" CornerRadius="5" BorderThickness="1" BorderBrush="Gray" Command="{Binding CMDReset}"/>
+            </StackPanel>
+        </Grid>
+        <!--Results Grid to show values in bottom side-->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15,5">
+                <hw:LinkedText Text="Delete Selected Rows" CommandParameter="{Binding ElementName=dgrid_main,Path=SelectedItems}" Command="{Binding CMDDeleteSelectedItems}"/>
+            </StackPanel>
+            <!-- Datagrid's selecteditems cannot be bounded directly. So we need to pass as parameter. -->
+            <DataGrid x:Name="dgrid_main" Grid.Row="1" Background="{x:Null}" ItemsSource="{Binding CurrentValues,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" CanUserResizeRows="False"  CanUserAddRows="False" IsReadOnly="True" AlternatingRowBackground="Gainsboro" GridLinesVisibility="Vertical" VerticalGridLinesBrush="Gray" CanUserDeleteRows="False" EnableRowVirtualization="True" BorderThickness="0" CanUserReorderColumns="False">
+                <DataGrid.Resources>
+                    <!-- Default datagrid has a resource with Key " HighlightBrushKey. We will over write that key here with a color. So that our color will be used instead of default one.-->
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="IndianRed"/>
+                    <!-- Same concept as above. But, we are not over writing any key but overwriting the style of datagridcolumn header itself.-->
+                    <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource DGColumnHeaderStyle}"/>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <hw:ImageButton Height="25" Width="25" hw:Icon.Default="{StaticResource bs_pencil_fill}" CommandParameter="{Binding}" Command="{Binding ElementName=dgrid_main,Path=DataContext.CMDEditCurrent}" Padding="3"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Haley.Helpers" Version="2.1.9" />
+    <PackageReference Include="Haley.WPF" Version="5.3.0-beta7" />
+    <PackageReference Include="Haley.WPF.IconsPack" Version="1.0.7" />
+  </ItemGroup>
+
+</Project>

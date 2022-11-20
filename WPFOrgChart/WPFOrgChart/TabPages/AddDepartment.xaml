@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WPFOrgChart.TabPages.AddDepartment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFOrgChart.TabPages"
+              xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <StackPanel>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}">
+            <WrapPanel VerticalAlignment="Center" Focusable="False">
+                <TextBlock Text="Title" />
+                <TextBlock Text="*" Foreground="Red"/>
+            </WrapPanel>
+            <TextBox Text="{Binding Current.Title,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="27"/>
+        </ItemsControl>
+        <ItemsControl Style="{StaticResource itmCtrlStyle}" >
+            <WrapPanel VerticalAlignment="Center" Focusable="False">
+                <TextBlock Text="Description" />
+                <!--<TextBlock Text="*" Foreground="Red"/>-->
+            </WrapPanel>
+            <TextBox Text="{Binding Current.Description,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="27"/>
+        </ItemsControl>
+        <!--If required, extend department to be under other departments (heirarchical)-->
+        <!--<ItemsControl Style="{StaticResource itmCtrlStyle}">
+                        <WrapPanel VerticalAlignment="Center">
+                            <TextBlock Text="Falls Under" />
+                            <TextBlock Text="*" Foreground="Red"/>
+                        </WrapPanel>
+                        <TextBox Text="" Grid.Column="1" Height="27"/>
+                    </ItemsControl>-->
+    </StackPanel>
+</UserControl>
