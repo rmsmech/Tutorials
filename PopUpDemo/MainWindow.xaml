@@ -1,0 +1,19 @@
+﻿<Window x:Class="PopUpDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PopUpDemo"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FF191931">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <local:CustomPopUp Source="{StaticResource cat_solid}" PopupImage="{StaticResource cat_light}" Fill="Violet" PopupMessage="Cat made us believe they are domesticated.. "/>
+            <local:CustomPopUp Source="{StaticResource bat_solid}" PopupImage="{StaticResource bat_light}" Fill="Orange" PopupMessage="Bat is a noctural animal.."/>
+            <local:CustomPopUp Source="{StaticResource dog_solid}" PopupImage="{StaticResource dog_light}" Fill="Yellow" PopupMessage="Dogs are domesticated.."/>
+            <local:CustomPopUp Source="{StaticResource alien_solid}" PopupImage="{StaticResource alien_light}" Fill="PaleGreen" PopupMessage="Aliens made us believe they don't exist..."/>
+        </StackPanel>
+    </Grid>
+</Window>
