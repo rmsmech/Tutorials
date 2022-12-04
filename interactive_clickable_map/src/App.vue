@@ -241,18 +241,31 @@ function changeHoverValue(hvalue){
 </template>
 
 <style scoped>
+@keyframes slowchange{
+  to {fill: indianred;}
+}
+
+@keyframes hoverChange{
+  to {fill:purple;}
+}
+
 
 path{
   fill:white;
 }
 
 .selectedPath{
-  fill:red;
+  animation-name: slowchange;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
 
 path:hover{
-  fill:purple;
+  animation-name: hoverChange;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
+
 
 .logo {
   height: 6em;
