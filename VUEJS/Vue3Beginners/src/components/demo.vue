@@ -4,12 +4,14 @@
         <h2 class="textcls" id="textid">{{name}}</h2>
         <h3 class="textcls" >Age: {{age}} | Sleeping: {{ isSleeping ? 'yes':'nope' }}</h3>
         <h3 class="textcls" >Salary: $ {{salary}}</h3>
-        <button v-on:click="increaseSalary">Increase Salary</button>
+        <button id="incrbtn" v-on:click="increaseSalary">Increase Salary</button>
     </div>
+    <imap/>
 </template>
 
 <script setup lang="ts">
 import { onUpdated,onBeforeUpdate, onBeforeMount , onMounted, ref } from 'vue';
+import imap from './IndiaMap.vue';
 
 //Functions
 //exposed/exported Properties (to be filled from outside)
@@ -20,13 +22,17 @@ const eprop = defineProps({
     isSleeping:Boolean,
 });
 
+const emit = defineEmits(["sincreased"]);
+
 const salary = ref(8500);
 // let salary = "5600";
 
-function increaseSalary() {
-    console.log("Current : ", salary.value);
+function increaseSalary(eve) {
+    console.log("Current : ", salary.value,eve,eve.target.id);
     salary.value = salary.value + 1000;
     console.log("Updated : ", salary.value);
+    // this.$emit('event', […args]); //'this' is not available inside script setup because it is in a different scope.
+    emit('sincreased');
 }
 
 function handleMount(){

@@ -9,7 +9,9 @@ const _routes = [{
     path:"/",
     name:"home",
     component: hw,
-    props: {msg : "Hello World 3"}
+    props: {msg : "Hello World 3",
+    newmsg:"This is count ref",
+    }
 },
 {
     path:"/demo",
