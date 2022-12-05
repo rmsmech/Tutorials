@@ -1,0 +1,47 @@
+﻿
+### 1 --- ADDING CONVERTER
+******CODE******
+  <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+FOR USING HALEY.WPF RESOURCES: When using Haley.WPF, please add the below resource dictionary directly. In that case, adding converter is not required as it is already added to haley RD.
+
+  <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+******CODE******
+
+#### 2 ---- MODELS:
+
+1. ChangeNotifier - For Managing Changes. Use OnPropertyChanged() or SetProp() methods.
+
+2. EventToCommand - For attaching commands to events in XAML (using interaction).
+
+3. NotifiableCollection - For Using an observable collection to notify changes inside the properties of the elements.
+
+4. IocAP - For Haley Attached properties (to be used in conjunction with HaleyContainers). To use in xaml.
+
+#### 3 ---- CONTAINERS:
+
+1. Use, "ContainerStore.Singleton.windows" to register and use windows.
+
+2. Use, "ContainerStore.Singleton.controls" to register and use controls.
+
+3. Use, "ContainerStore.Singleton.DI" to register and resolve for dependency injection cases.
+
+#### 4 ---- NOTIFICATION / DIALOG SERVICE:
+
+1. By default, the dialog service will be registered to containerstore di. Use "var _dservice = ContainerStore.Singleton.DI.Resolve<IDialogService>()" to get the dialog service. 
+
+2. Use dialog service as "bool is_success = _dservice.send("Title","message",DialogMode.Confirmation")". Use different dialog modes, like confirmation, notification, getinput.
+
+3. Also, for getting inputs as string, use "_dservice.receive" which should get user input and returns in "out" object.
+
+#### 5 ---- IMAGE UTILS.
+
+A fully functional image utility is added and can be accessed by the static class "ImageUtils". It is helpful for converting images, reducing pixels and size etc.
+
+
+
