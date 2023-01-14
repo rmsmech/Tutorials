@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,100;0,300;0,400;0,600;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <title>SideNavBar</title>
+  </head>
+  <body>
+    <div class="main-container nav-open">
+      <!-- #region TOP NAV-->
+      <div class="top-nav shadow-effect">
+        <i class="side-nav-toggle nav-open bx bxs-toggle-right"></i>
+        <i
+          class="bx bxl-mailchimp"
+          style="font-size: 2.5rem; color: rgb(140, 47, 4)"
+        ></i>
+        <span style="font-size: 1.25rem; color: rgb(75, 87, 100)"
+          >ABC Company</span
+        >
+      </div>
+
+      <!--#endregion-->
+
+      <div class="side-nav shadow-effect">
+        <div class="dp-holder">
+          <img src="./resources/dp.jpg" style="height: 160px" />
+          <span>S Mahalingam</span>
+          <span>Digital Engg. Manager</span>
+          <hr
+            style="
+              align-self: stretch;
+              justify-self: stretch;
+              margin: 1rem 0.4rem;
+              color: gainsboro;
+            "
+          />
+          <!-- Since we are aligning it in center,the horizontal line is hidden. We need to stretch only the hr-->
+        </div>
+
+        <!-- #region SIDE NAV-->
+        <!--This center region needs to grow and fill the remaining area of the flex -->
+        <div class="s-nav-menu-region">
+          <!--DashBoard-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bxs-home-alt-2"></i>
+            <span tag="Home">Home</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bxs-bar-chart-square"></i>
+            <span tag="Analytics">Analytics</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-cog"></i>
+            <span tag="Settings">Settings</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-map-pin"></i>
+            <span tag="Locations">Locations</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-chat"></i>
+            <span tag="Chat">Chat</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-network-chart"></i>
+            <span tag="Connections">Connections</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-time"></i>
+            <span tag="TimeSheet">Time Sheet</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-cart"></i>
+            <span tag="Cart">Cart</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-briefcase"></i>
+            <span tag="Projects">Projects</span>
+          </div>
+
+          <!--Layouts-->
+          <div class="s-nav-menu">
+            <i class="s-nav-logo bx bx-palette"></i>
+            <span tag="Options">Options</span>
+          </div>
+        </div>
+
+        <!--#endregion-->
+
+        <div class="logout-menu">
+          <div class="s-nav-menu nav-logout">
+            <i class="s-nav-logo bx bx-log-out-circle"></i>
+            <span tag="LogOut">Log Out</span>
+          </div>
+        </div>
+      </div>
+      <!-- #region CONTENT-->
+      <div class="content-holder">
+        <div
+          class="welcome-card shadow"
+        >
+        <div style="display:flex;flex-direction: column;">
+            <span style="font-size: 1.5rem;color:rgb(72, 71, 71)">Hello, Mahalingam. Welcome!!!</span>
+            <span style="font-size: 1.255rem;color:rgb(93, 101, 119); margin:1rem 0rem;">This is what's happening with your projects today.. </span>
+        </div>
+          <img class="abstract-image"  src="./resources/abstract.png" />
+        </div>
+      </div>
+
+      <!--#endregion-->
+    </div>
+    <div class="tool-tip">Tooltip</div>
+    <!--Script is getting loaded at beginning before .. Now load at the end so that the elemtns are generated first.-->
+    <script src="./index.js"></script>
+  </body>
+</html>

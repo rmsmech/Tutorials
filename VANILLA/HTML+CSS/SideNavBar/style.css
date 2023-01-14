@@ -1,0 +1,254 @@
+:root {
+    font-size: 18px;
+    line-height: 18px;
+    font-family: 'Sofia Sans', sans-serif;
+
+    /* Lets create few variables to handle the relative changes */
+    --side-nav-closed-width: 4rem;
+    --side-nav-open-width: 14rem;
+    --top-nav-height: 3rem;
+
+    --normal-trans: all 0.2s ease;
+}
+
+body {
+    background-color: pink;
+    margin: 0px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-tip {
+    position: absolute;
+    left: calc(var(--side-nav-closed-width) + 1rem);
+    background-color: rgb(12, 177, 75);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    visibility: collapse;
+}
+
+.main-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(232, 232, 232);
+}
+
+.top-nav {
+    background-color: white;
+    height: var(--top-nav-height);
+    padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    position: sticky
+}
+
+.content-holder {
+    /* background-color: red; */
+    margin: 1rem;
+    margin-left: calc(var(--side-nav-closed-width) + 1rem);
+    transition: var(--normal-trans);
+}
+
+.side-nav {
+    position: fixed;
+    background-color: white;
+    top: calc(var(--top-nav-height) + 1rem);
+    bottom: 0.5rem;
+    left: 0.5rem;
+    border-radius: 10px;
+    width: var(--side-nav-closed-width);
+    /* We have added padding which will get added to the outer. To avoid it we box it. */
+    box-sizing: border-box;
+    /* This ensures the padding is added to the inside*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: flex-end;
+    overflow: hidden;
+    /* //add some transition effect */
+    transition: var(--normal-trans);
+}
+
+.s-nav-menu-region {
+    width: var(--side-nav-closed-width);
+    /* We have added padding which will get added to the outer. To avoid it we box it. */
+    box-sizing: border-box;
+    /* This ensures the padding is added to the inside*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    /* //add some transition effect */
+    transition: var(--normal-trans);
+}
+
+.dp-holder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(37, 59, 81);
+    text-transform: uppercase;
+}
+
+.scroll-bar-hidden {
+    scrollbar-width: none;
+    /* firefox */
+    -ms-overflow-style: none;
+    /* Edge */
+}
+
+.scroll-bar-hidden::-webkit-scrollbar {
+    display: none
+        /* For chrome , safari*/
+}
+
+.s-nav-menu {
+    display: flex;
+    font-size: larger;
+    align-items: center;
+    padding: 0.25rem;
+    font-weight: 300;
+    color: rgb(74, 81, 88);
+    cursor: pointer;
+    margin: 0.35rem;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    width: calc(100% - 0.1rem);
+    justify-content: center;
+
+}
+
+.s-nav-menu.selected {
+    background-color: rgb(210, 101, 81);
+    color: white;
+}
+
+.s-nav-menu:hover.selected {
+    background-color: rgb(240, 68, 38);
+    color: white;
+}
+
+.s-nav-menu:hover {
+    background-color: rgb(219, 236, 243);
+    color: rgb(5, 113, 155);
+}
+
+.nav-logout:hover {
+    background-color: rgb(202, 206, 211);
+    color: rgb(5, 113, 155);
+}
+
+
+.s-nav-logo {
+    font-size: 2.5rem;
+    transition: var(--normal-trans);
+}
+
+.side-nav-toggle {
+    font-size: 2.5rem;
+    color: slategray;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+/* Below is a multiclass selector where elements with all the specified classes will be selected */
+.side-nav-toggle.nav-open {
+    transform: rotate(0deg);
+    color: rgb(32, 140, 182);
+}
+
+.logout-menu {
+    background-color: rgb(156, 185, 197);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.side-nav-toggle:hover {
+    color: slateblue;
+    /* transform:rotate(0deg); */
+}
+
+/* When maincontainer has the side-nav open, we call it's child side-nav and then adjust the width; */
+/* Use a combinator selector to find the child. */
+.main-container.nav-open .side-nav {
+    width: var(--side-nav-open-width);
+    /* align-items: flex-start; */
+}
+
+.welcome-card {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    height: 10rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.abstract-image {
+    position: absolute;
+    top: -100px;
+    right: 0px;
+    height: 400px
+}
+
+.main-container.nav-open .s-nav-menu-region {
+    width: var(--side-nav-open-width);
+}
+
+.main-container.nav-open .content-holder {
+    margin: 1rem;
+    margin-left: calc(var(--side-nav-open-width) + 2rem);
+}
+
+/* //Select all the direct span-child inside side-nav inside the main-container, whenever the nav is open. */
+/* Main-container => Side Nav Menu => Direct Span Child*/
+.main-container.nav-open .side-nav .s-nav-menu>span {
+    /* Hidden just hides it but still occupies the space:
+    Collapse releases the space
+    */
+    visibility: visible;
+    user-select: none;
+}
+
+.main-container .side-nav .s-nav-menu>span {
+    visibility: collapse;
+}
+
+.main-container.nav-open .s-nav-menu {
+    width: calc(100% - 0.6rem);
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.dp-holder {
+    visibility: collapse;
+    transform: var(--normal-trans);
+}
+
+.main-container.nav-open .dp-holder {
+    visibility: visible;
+}
+
+.main-container.nav-open .s-nav-logo {
+    font-size: 2rem;
+}
+
+.shadow-effect {
+    box-shadow: 0.1rem 0.1rem 0.25rem rgb(169, 168, 168);
+}
+
+@media (max-width: 992px){
+    .abstract-image{
+        visibility: hidden;
+    }
+}
