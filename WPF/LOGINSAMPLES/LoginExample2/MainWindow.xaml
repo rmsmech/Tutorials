@@ -1,0 +1,45 @@
+﻿<Window x:Class="LoginExample2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginExample2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,1" >
+                    <GradientStop Color="#FFFFF846" Offset="1"/>
+                    <GradientStop Color="#FF6CFFCC" Offset="0.6"/>
+                    <GradientStop Color="#FF516CFF" Offset="0.4"/>
+                    <GradientStop Color="#FFE028FF" Offset="0.2"/>
+                    <GradientStop Color="#FFFF4040"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+        <Grid Background="#4C2B7CEA"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border Background="White" CornerRadius="25" Width="600" Height="400">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="30"/>
+                </Border.Effect>
+            </Border>
+            <Grid Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <!--Form-->
+                <Grid Grid.Column="1">
+                    <StackPanel>
+                        <TextBox Height="30" Width="150" Text="hello"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+       
+        
+    </Grid>
+</Window>
