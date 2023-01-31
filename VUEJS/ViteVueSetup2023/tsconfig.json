@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      //Direct
+
+      //Sub Locations
+      "@/*": ["*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["@Pages/*"],
+    }
+  },
+  "include": [
+    "src/**/*.ts", 
+    "src/**/*.d.ts", 
+    "src/**/*.tsx", 
+    "src/**/*.vue",
+    "vite.config.*",
+    "auto-imports.d.ts"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
