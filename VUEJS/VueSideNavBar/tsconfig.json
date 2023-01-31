@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -11,8 +12,12 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@/*":["./*"],
+      "@components/*":["./components/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/routes.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","interfaces.d.ts","auto-imports.d.ts","*.d.ts"], //To allow d.ts files outside of the src folder to be loaded
   "references": [{ "path": "./tsconfig.node.json" }]
 }

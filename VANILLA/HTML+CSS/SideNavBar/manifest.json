@@ -1,0 +1,11 @@
+{
+    "name": "Pilot Test",
+    "version": "1.0.0",
+    "description": "check how chrome add-ons work",
+    "manifest_version": 3,
+    "author": "lingam",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Pilot test"
+    }
+}
