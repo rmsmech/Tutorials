@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Haley.Rest" Version="2.0.6.3" />
+    <PackageReference Include="Haley.WPF" Version="5.3.2" />
+    <PackageReference Include="Haley.WPF.IconsPack" Version="1.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="6.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthService\AuthService.csproj" />
+  </ItemGroup>
+
+</Project>
