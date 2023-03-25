@@ -5,11 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleAuth", "GoogleAuth\GoogleAuth.csproj", "{3B3EC45F-CF45-4E2C-9ADC-96EA4BC2313F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\AuthService.csproj", "{34E78664-CF00-43DC-9DF4-BED5F4DC79AD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{573B5E1A-F00D-4CE8-B5F2-3DA37A79B916}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication3", "WebApplication3\WebApplication3.csproj", "{740D08FA-970C-4B3D-B7D2-A2A10A065010}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService", "AuthService\AuthService.csproj", "{34E78664-CF00-43DC-9DF4-BED5F4DC79AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +21,6 @@ Global
 		{34E78664-CF00-43DC-9DF4-BED5F4DC79AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34E78664-CF00-43DC-9DF4-BED5F4DC79AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34E78664-CF00-43DC-9DF4-BED5F4DC79AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{573B5E1A-F00D-4CE8-B5F2-3DA37A79B916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{573B5E1A-F00D-4CE8-B5F2-3DA37A79B916}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{573B5E1A-F00D-4CE8-B5F2-3DA37A79B916}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{573B5E1A-F00D-4CE8-B5F2-3DA37A79B916}.Release|Any CPU.Build.0 = Release|Any CPU
-		{740D08FA-970C-4B3D-B7D2-A2A10A065010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{740D08FA-970C-4B3D-B7D2-A2A10A065010}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{740D08FA-970C-4B3D-B7D2-A2A10A065010}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{740D08FA-970C-4B3D-B7D2-A2A10A065010}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
