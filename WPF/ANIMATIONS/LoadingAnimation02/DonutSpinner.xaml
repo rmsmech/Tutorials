@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="LoadingAnimation02.DonutSpinner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoadingAnimation02"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" >
+    <Viewbox>
+        <Canvas  Height="200" Width="200">
+            <!-- Arc (size, [ Rotating angle, small or large arc, clockwise direction ], coordinates)-->
+            <Path  Fill="#FFD9DADE" Data="M 0 100 a 100,100 0 1 1 200,0 a 100,100 0 1 1 -200,0 M 30 100 a 70,70 0 1 1 140,0 a 70,70 0 1 1 -140,0"/>
+            <Path  Fill="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DonutSpinner}},Path=SpinnerColor,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Data="M 0 100 a 100,100 0 0 1 100,-100 v 30 a 70,70 0 0 0 -70,70" RenderTransformOrigin="1,1">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-3"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+                <Path.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(Path.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DonutSpinner}},Path=Duration,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Path.Triggers>
+            </Path>
+        </Canvas>
+    </Viewbox>
+</UserControl>

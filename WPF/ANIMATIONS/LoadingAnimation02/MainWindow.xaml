@@ -1,0 +1,23 @@
+﻿<Window x:Class="LoadingAnimation02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoadingAnimation02"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Orientation="Horizontal">
+        <local:DonutSpinner  Height="80" Width="80" Margin="10, 0"/>
+        <local:DonutSpinner  Height="80" Width="80" Margin="10, 0" Duration="0:0:1.5">
+            <local:DonutSpinner.SpinnerColor>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF9A1570"/>
+                    <GradientStop Color="#FF08865B" Offset="1"/>
+                </LinearGradientBrush>
+            </local:DonutSpinner.SpinnerColor>
+        </local:DonutSpinner>
+        <local:DonutSpinner  Height="80" Width="80" Margin="10, 0" Duration="0:0:2" SpinnerColor="#FF0C675D"/>
+        <local:DonutSpinner  Height="40" Width="40" Margin="10, 0" Duration="0:0:0.5" SpinnerColor="Red"/>
+        <TextBlock Text="Loading.. Please wait..." VerticalAlignment="Center"/>
+    </StackPanel>
+</Window>
