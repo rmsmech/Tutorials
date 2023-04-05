@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  align-items:center;
+}
+
+.main-container {
+  background-color: rgb(213, 177, 213);
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+/* 1. Create a simple rectangle with border on all sides.
+2. Make one side of the rectangle with different color
+3. Make the rectangle border radius as 50%
+4. Create a rotate animation on the angle */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 15px solid rgb(219, 213, 213);
+  border-top: 15px solid rgb(14, 59, 97);
+  border-radius: 50%;
+  animation: spin 2s linear infinite; /* Create an animation with parameters from 'spin' and run this for 1sec infinitely */
+}
+
+/* Create a spin keyframe with parameters for the rotation from 0 to 360 degree */
+@keyframes spin {
+  /* At 0% or start of the animation, rotate angle is 0 degree*/
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
