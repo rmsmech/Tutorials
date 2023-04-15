@@ -1,0 +1,49 @@
+﻿<Window x:Class="AmazonScraping.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AmazonScraping"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="columnIC" TargetType="{x:Type ItemsControl}">
+                <Setter Property="Margin" Value="0, 5"/>
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10, 30">
+            <ItemsControl Style="{StaticResource columnIC}">
+                <TextBlock VerticalAlignment="Center" Text="Keyword"/>
+                <TextBox Height="30" Grid.Column="1" Text="{Binding Keyword,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </ItemsControl>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Height="30" Width="150" Margin="5,0" Content="Scrap" Command="{Binding CMDExecuteScrap}"/>
+                <Button Height="30" Width="150" Content="Export" Command="{Binding CMDSave}"/>
+            </StackPanel>
+           
+            
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <TextBlock  Text="{Binding Results,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}" Margin="0, 10" Background="#FFF9F9D8" TextWrapping="WrapWithOverflow"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
