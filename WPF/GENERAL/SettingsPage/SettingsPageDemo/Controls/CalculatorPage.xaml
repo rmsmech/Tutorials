@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="SettingsPageDemo.Controls.CalculatorPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SettingsPageDemo.Controls"
+             xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+             xmlns:enum="clr-namespace:SettingsPageDemo.Enums"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ic2" TargetType="{x:Type ItemsControl}">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="120"/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <DataTemplate x:Key="circleTemplate">
+                <StackPanel DataContext="{Binding CurrentShape,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}">
+                    <TextBlock Text="Circle Area" FontWeight="Bold" Foreground="DarkSlateBlue" />
+                    <WrapPanel Margin="0,10">
+                        <TextBlock Text="Formula = " FontWeight="Bold" />
+                        <TextBlock Text="πr²" FontSize="14" Foreground="IndianRed"/>
+                    </WrapPanel>
+                    <ItemsControl Style="{StaticResource ic2}">
+                        <TextBlock Text="Radius (r) :"/>
+                        <TextBox Grid.Column="1" Text="{Binding Radius}"/>
+                    </ItemsControl>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="rectangleTemplate">
+                <StackPanel DataContext="{Binding CurrentShape,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}">
+                    <TextBlock Text="Rectangle Area" FontWeight="Bold" Foreground="DarkSlateBlue" />
+                    <WrapPanel Margin="0,10">
+                        <TextBlock Text="Formula = " FontWeight="Bold" />
+                        <TextBlock Text="length X width (l x w)" FontSize="14" Foreground="IndianRed"/>
+                    </WrapPanel>
+                    <ItemsControl Style="{StaticResource ic2}">
+                        <TextBlock Text="Length (l) :"/>
+                        <TextBox Grid.Column="1" Text="{Binding Length}"/>
+                    </ItemsControl>
+                    <ItemsControl Style="{StaticResource ic2}">
+                        <TextBlock Text="Width (w) :"/>
+                        <TextBox Grid.Column="1" Text="{Binding Width}"/>
+                    </ItemsControl>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="sqaureTemplate">
+                <StackPanel DataContext="{Binding CurrentShape,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}">
+                    <TextBlock Text="Square Area" FontWeight="Bold" Foreground="DarkSlateBlue" />
+                    <WrapPanel Margin="0,10">
+                        <TextBlock Text="Formula = " FontWeight="Bold" />
+                        <TextBlock Text="length X length (l x l)" FontSize="14" Foreground="IndianRed"/>
+                    </WrapPanel>
+                    <ItemsControl Style="{StaticResource ic2}">
+                        <TextBlock Text="Length (l) :"/>
+                        <TextBox Grid.Column="1" Text="{Binding Length}"/>
+                    </ItemsControl>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="triangleTemplate">
+                <StackPanel DataContext="{Binding CurrentShape,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}">
+                    <TextBlock Text="Triangle Area" FontWeight="Bold" Foreground="DarkSlateBlue" />
+                    <WrapPanel Margin="0,10">
+                        <TextBlock Text="Formula = " FontWeight="Bold" />
+                        <TextBlock Text="(height_from_base X base_length) / 2" FontSize="14" Foreground="IndianRed"/>
+                    </WrapPanel>
+                    <ItemsControl Style="{StaticResource ic2}">
+                        <TextBlock Text="Height from base (h) :"/>
+                        <TextBox Grid.Column="1" Text="{Binding Height}"/>
+                    </ItemsControl>
+                    <ItemsControl Style="{StaticResource ic2}">
+                        <TextBlock Text="Base length (b) :"/>
+                        <TextBox Grid.Column="1" Text="{Binding Length}"/>
+                    </ItemsControl>
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Let's add a combo box with drop down, to show different targets like circle, rectange, square etc..-->
+        <WrapPanel Margin="10">
+            <TextBlock Text="Choose a target : "/>
+            <ComboBox Width="120" SelectedItem="{Binding SelectedTarget}" ItemsSource="{Binding  Source={x:Type enum:TargetEnum},Converter={hm:Converter Kind=EnumTypeToValues}}"/>
+        </WrapPanel>
+        <!--TEMPORARY TO DESIGN-->
+        <!--<StackPanel Grid.Row="1">
+            <TextBlock Text="Triangle Area" FontWeight="Bold" Foreground="DarkSlateBlue" />
+            <WrapPanel Margin="0,10">
+                <TextBlock Text="Formula = " FontWeight="Bold" />
+                <TextBlock Text="(height_from_base X base_length) / 2" FontSize="14" Foreground="IndianRed"/>
+            </WrapPanel>
+        </StackPanel>-->
+        <Grid Grid.Row="2" Margin="10">
+            <ContentControl DataContext="{Binding}" Content="{Binding}" >
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedTarget}" Value="{x:Static enum:TargetEnum.Circle}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource circleTemplate}"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding SelectedTarget}" Value="{x:Static enum:TargetEnum.Rectangle}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource rectangleTemplate}"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding SelectedTarget}" Value="{x:Static enum:TargetEnum.Square}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource sqaureTemplate}"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding SelectedTarget}" Value="{x:Static enum:TargetEnum.Triangle}">
+                                <Setter Property="ContentTemplate" Value="{StaticResource triangleTemplate}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="5">
+            <hw:ComboButton Height="27" CornerRadius="5" hw:Icon.Default="{hw:ImgInt Kind=Common}" Content="Calculate" ImageLocation="Left" Width="120" HorizontalAlignment="Left" BorderBrush="Gray" BorderThickness="0.75" Command="{Binding CMDCalculate}"/>
+            <TextBlock Text="{Binding CurrentShape.Result}" HorizontalAlignment="Right" FontSize="16"/>
+        </Grid>
+    </Grid>
+</UserControl>

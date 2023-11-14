@@ -1,10 +1,12 @@
 ﻿
-### 1 --- ADDING CONVERTER
-******CODE******
+### 1 --- ADDING CONVERTERS
+
+############ ONLY CONVERTERS FROM HALEY.MVVM ############
   <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
   </ResourceDictionary.MergedDictionaries>
 
+############# ALL UI RESOURCES FROM HALEY.WPF ############
 FOR USING HALEY.WPF RESOURCES: When using Haley.WPF, please add the below resource dictionary directly. In that case, adding converter is not required as it is already added to haley RD.
 
   <ResourceDictionary.MergedDictionaries>
@@ -23,17 +25,19 @@ FOR USING HALEY.WPF RESOURCES: When using Haley.WPF, please add the below resour
 
 4. IocAP - For Haley Attached properties (to be used in conjunction with HaleyContainers). To use in xaml.
 
+5. BaseVM  - Use this base clss (which extends ChangeNotifier)
+
 #### 3 ---- CONTAINERS:
 
-1. Use, "ContainerStore.Singleton.Windows" to register and use windows.
+1. Use, "ContainerStore.Windows" to register and use windows.
 
-2. Use, "ContainerStore.Singleton.Controls" to register and use controls.
+2. Use, "ContainerStore.Controls" to register and use controls.
 
-3. Use, "ContainerStore.Singleton.DI" to register and resolve for dependency injection cases.
+3. Use, "ContainerStore.DI" to register and resolve for dependency injection cases.
 
 #### 4 ---- NOTIFICATION / DIALOG SERVICE:
 
-1. By default, the dialog service will be registered to containerstore di. Use "var _dservice = ContainerStore.Singleton.DI.Resolve<IDialogService>()" to get the dialog service. 
+1. By default, the dialog service will be registered to containerstore di. Use "var _dservice = ContainerStore.DI.Resolve<IDialogService>()" to get the dialog service. 
 
 2. Use dialog service as "bool is_success = _dservice.send("Title","message",DialogMode.Confirmation")". Use different dialog modes, like confirmation, notification, getinput.
 
@@ -42,6 +46,10 @@ FOR USING HALEY.WPF RESOURCES: When using Haley.WPF, please add the below resour
 #### 5 ---- IMAGE UTILS.
 
 A fully functional image utility is added and can be accessed by the static class "ImageUtils". It is helpful for converting images, reducing pixels and size etc.
+
+
+#### Theme Details #####
+
 
 
 

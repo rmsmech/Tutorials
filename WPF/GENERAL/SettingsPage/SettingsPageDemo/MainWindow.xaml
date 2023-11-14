@@ -1,0 +1,21 @@
+﻿<hw:PlainWindow x:Class="SettingsPageDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SettingsPageDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600" ControlBoxStyle="Mac" HideFooter="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <hw:ComboButton ImageLocation="Top" Content="Calculator" Margin="10,2" CornerRadius="10" hw:Icon.Default="{hw:ImgInt Kind=home}" Width="90" Padding="5" Command="{Binding CMDChangeCurrentView}" CommandParameter="{x:Static local:ViewEnum.HomeView}"/>
+            <hw:ComboButton ImageLocation="Top" Content="Settings" Margin="10,2" CornerRadius="10" hw:Icon.Default="{hw:ImgInt Kind=settings_double_spanner}" Width="90" Padding="5" Command="{Binding CMDChangeCurrentView}" CommandParameter="{x:Static local:ViewEnum.SettingsView}"/>
+        </StackPanel>
+        <hw:ContainerViewer Grid.Row="1" ViewKey="{Binding CurrentView}" Margin="0,10"/>
+    </Grid>
+</hw:PlainWindow>
